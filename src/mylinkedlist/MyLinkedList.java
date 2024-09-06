@@ -76,6 +76,39 @@ public class MyLinkedList extends Node {
             head = head.next;
         }
     }
+        //BTVN3 : 
+        //viet code ham sort tăng dần
+        public void sort(){
+            if(head == null|| head.next == null){
+                return;
+            }
+            Node current = head;
+            Node index = null;
+            int temp;
+            while(current != null){
+                index = current.next;
+                while(index != null){
+                    if(current.data > index.data){
+                        temp = current.data;
+                        current.data = index.data;
+                        index.data = temp;
+                    }
+                    index = index.next;
+                }
+                current = current.next;
+            }
+                }
+            // viet code xoa phan tu tai vi tri index theo vong while, dùng count++
+        public Node DeletePosition(int index){
+            Node temp = head;
+            int count = 0;
+            while(temp != null && count < index){
+              count++;
+              head= head.next;
+            } 
+            return head;
+        }
+    
     public static void main(String[] args) {
         MyLinkedList linkedList = new MyLinkedList();
        linkedList.addFirst(1);
@@ -91,7 +124,12 @@ public class MyLinkedList extends Node {
         linkedList.deleteFirst();
         System.out.println("Sau khi xoa truoc la: ");
         linkedList.display();
-       
+        System.out.println("Danh sách sau khi sap xep tang dan la: ");
+        linkedList.sort();
+        linkedList.display();
+        linkedList.DeletePosition(2);
+        System.out.println("Danh sach sau khi xoa tai index 2 la: ");
+        linkedList.display();
+     }
     }
 
-}
